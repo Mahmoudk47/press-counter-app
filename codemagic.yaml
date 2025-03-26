@@ -4,6 +4,11 @@ workflows:
     environment:
       flutter: stable
     scripts:
+      - name: Install Flutter
+        script: |
+          git clone https://github.com/flutter/flutter.git --depth 1 -b stable
+          export PATH="$PATH:`pwd`/flutter/bin"
+          flutter doctor
       - name: Get Flutter packages
         script: flutter pub get
       - name: Build APK
